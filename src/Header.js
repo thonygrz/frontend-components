@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   },
   hide: {
     display: 'none',
-  },
+  }
 }));
 
 const Header = ({ userName, title, open, setOpen }) => {

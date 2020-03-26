@@ -1,4 +1,4 @@
-import React, { Fragment} from 'react';
+import React, {Fragment} from 'react';
 import clsx from 'clsx';
 import { makeStyles} from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
@@ -10,30 +10,18 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 //Icons
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import InsertChartIcon from '@material-ui/icons/InsertChart';
-import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
-import GroupIcon from '@material-ui/icons/Group';
 
 const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
   drawerColor:{
     backgroundColor: '#F6F6F6',
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  hide: {
-    display: 'none',
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
+    marginLeft: '-8px'
   },
   drawerOpen: {
     WebkitBoxShadow: '0px 0px 21px -9px rgba(0,0,0,0.49)',
@@ -70,9 +58,6 @@ const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-  },
-  logoBaup: {
-    height: '70px',
   },
   list: {
     paddingBottom: theme.spacing(2),
@@ -114,6 +99,7 @@ const useStyles = makeStyles(theme => ({
   },
   listTop:{
     paddingBottom: '0',
+    paddingTop: '6px',
   },
   listBottom:{
     paddingTop: '0',
@@ -126,24 +112,6 @@ const useStyles = makeStyles(theme => ({
 
 const SideBar = ({open, title, saveTitle, sideBarOptions}) => {
   const classes = useStyles();
-
-
-  const getOptionIcon = (option) =>{
-    
-    switch(option){
-      case('Dashboard'):
-        return <InsertChartIcon/>;
-      case('Solicitudes'):
-        return <MoveToInboxIcon/>;
-      case('Formularios'):
-        return <InsertDriveFileIcon/>;
-      case('Usuarios'):
-        return <GroupIcon/>;
-      default:
-        return null;
-    }
-    
-  };
 
   const setOptionActive = (index) => {
     let option = sideBarOptions[index];
@@ -165,9 +133,7 @@ const SideBar = ({open, title, saveTitle, sideBarOptions}) => {
           }),
         }}
       >
-        <div className={classes.toolbar}>
-        </div>
-        <Divider />
+        <div className={classes.toolbar}/>
         <List className={classes.listTop}>
           {sideBarOptions.map((option, index) => (
             <ListItem
@@ -180,7 +146,7 @@ const SideBar = ({open, title, saveTitle, sideBarOptions}) => {
               <ListItemIcon className={clsx({
                 [classes.iconActive]: option.title === title,
               })}>
-                {getOptionIcon(option.title)}
+                {option.icon}
               </ListItemIcon>
               <ListItemText primary={option.title} />
             </ListItem>
